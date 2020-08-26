@@ -2,6 +2,7 @@ package main.Soap;
 
 import main.Entidades.Formulario;
 import main.Entidades.Usuario;
+import main.Services.UserServices;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -11,12 +12,20 @@ import java.util.List;
 public class SoapWebService {
 
     private FakeServices fakeServices = FakeServices.getInstancia();
+    private UserServices instancia = UserServices.getInstance();
 
+    
     @WebMethod
-    public Usuario getLogin(String usuario, String password){
-        return fakeServices.crearUsuario(usuario,password);
+    public boolean getLogin(String usuario, String password){
+        Usuario user = instancia.getUsuario(usuario);
+        Boolean aux = false;
+        if(usuario != null) {
+            if (user.getPassword().matches(password)) {
+                aux = true;
+            }
+        }
+        return aux;
     }
-
     @WebMethod
     public List<Formulario> getListaFormulario(){
         return fakeServices.getlistaFormulario();
