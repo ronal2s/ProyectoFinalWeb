@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+group 'parcial2'
+version '1.0-SNAPSHOT'
+
+mainClassName = 'main.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'io.javalin:javalin:3.9.0'
+    compile 'org.slf4j:slf4j-simple:1.7.30'
+    compile "io.jsonwebtoken:jjwt:0.9.1"
+    compile group: 'org.eclipse.jetty', name: 'jetty-http-spi', version: '9.4.30.v20200611'
+    compile "org.glassfish.jaxb:jaxb-runtime:2.4.0-b180830.0438"
+    compile "com.sun.xml.ws:jaxws-rt:2.3.1"
+    compile "com.sun.xml.ws:rt:2.3.1"
+    compile "org.freemarker:freemarker:2.3.30"
+    compile 'com.h2database:h2:1.4.200'
+    compile 'org.hibernate:hibernate-core:5.4.17.Final'
+    compile 'org.hibernate:hibernate-entitymanager:5.4.17.Final'
+    compile 'com.j2html:j2html:1.0.0'
+    compile "com.fasterxml.jackson.core:jackson-databind:2.10.5"
+}
+
+shadowJar{
+    baseName = 'parcial2'
+    classifier = ''
+    archiveVersion = ''
+}
